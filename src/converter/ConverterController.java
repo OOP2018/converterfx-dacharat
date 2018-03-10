@@ -6,6 +6,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+/**
+ * UI controller for events and initializing components.
+ * 
+ * @author Dacharat Pankong
+ *
+ */
 public class ConverterController {
 
 	@FXML
@@ -42,24 +48,34 @@ public class ConverterController {
 		}
 	}
 
-	
+	/**
+	 * JavaFX call onEnter() when you click enter.
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void onEnter(ActionEvent event) {
 		handleConvert(event);
 	}
 
+	/**
+	 * Convert a distance from one unit to another.
+	 * 
+	 * @param event
+	 */
 	public void handleConvert(ActionEvent event) {
 		String leftText = textField1.getText().trim();
 		String rightText = textField2.getText().trim();
 		Length unit1 = combo1.getValue();
 		Length unit2 = combo2.getValue();
+		textField1.setStyle("-fx-text-fill: black");
+		textField2.setStyle("-fx-text-fill: black");
 
 		if (!leftText.equals("")) {
 			double left = 0;
 			try {
 				left = Double.parseDouble(leftText);
 				textField2.setText(String.format("%.4g", left * unit1.getValue() / unit2.getValue()));
-				textField2.setStyle("-fx-text-fill: black");
 			} catch (NumberFormatException e) {
 				textField2.setText("Error!!");
 				textField2.setStyle("-fx-text-fill: red");
@@ -69,7 +85,6 @@ public class ConverterController {
 			try {
 				right = Double.parseDouble(rightText);
 				textField1.setText(String.format("%.4g", right * unit2.getValue() / unit1.getValue()));
-				textField1.setStyle("-fx-text-fill: black");
 			} catch (NumberFormatException e) {
 				textField1.setText("Error!!");
 				textField1.setStyle("-fx-text-fill: red");
@@ -77,8 +92,16 @@ public class ConverterController {
 		}
 	}
 
+	/**
+	 * Clear textField empty.
+	 * 
+	 * @param event
+	 */
 	public void handleClear(ActionEvent event) {
 		textField1.clear();
 		textField2.clear();
+		textField1.setStyle("-fx-text-fill: black");
+		textField2.setStyle("-fx-text-fill: black");
+
 	}
 }

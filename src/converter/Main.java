@@ -4,10 +4,19 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-//import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
 
+/**
+ * Main for start program.
+ * 
+ * @author Dacharat Pankong
+ *
+ */
 public class Main extends Application {
+	
+	/**
+	 * Start program by choose GUI from fxml file.
+	 */
 	@Override
 	public void start(Stage stage) {
 		try {
